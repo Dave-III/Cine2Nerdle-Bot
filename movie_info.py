@@ -1,12 +1,14 @@
 from tmdbv3api import TMDb, Movie
 import json
 import time
-
+from dotenv import load_dotenv
+import os
 # --- Setup ---
 tmdb = TMDb()
-tmdb.api_key = "c8004837d09a5d36aa9d2c50aa9fa9a2"
-tmdb.language = "en"
 
+load_dotenv()
+
+tmdb.api_key = os.getenv("TMDB_API_KEY")
 movie_api = Movie()
 
 def fetch_movies_with_cast(max_pages=500):
